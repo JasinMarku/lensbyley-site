@@ -1,0 +1,572 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Lora', serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+/* Navigation Bar */
+.navbar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spaces out socials and button */
+    width: calc(100% - 20px); /* Ensures content stays within the viewport */
+    padding-right: 20px; /* Adds padding on the right to avoid cutoff */
+    z-index: 3;
+  }
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+  }
+  
+  .navbar ul li {
+    margin: 0; /* Removes any default margin */
+  }
+  
+  .social-icon {
+    width: 25px; /* Adjusts the size of the icons */
+    height: 25px; /* Ensures uniform size */
+    cursor: pointer; /* Adds a pointer cursor for better UX */
+    transition: transform 0.2s, opacity 0.2s; /* Adds a hover effect */
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2); /* Slightly enlarges the icon on hover */
+    opacity: 0.8; /* Makes the icon slightly transparent on hover */
+  }
+  
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Full-screen height with room for content below */
+  background-image: url('./porfolio/1.jpg'); /* Hero image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center; /* Centers the text horizontally */
+  align-items: center; /* Centers the text vertically */
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for contrast */
+  z-index: 1;
+}
+
+/* Hero Text */
+.hero-text {
+  font-family: 'Fraunces', serif;
+  position: relative;
+  z-index: 2; /* Ensures text is above the overlay */
+  color: #fff; /* White text */
+  text-align: center;
+  max-width: 800px; /* Limits the width of the text block */
+  margin: 0 auto;
+}
+
+/* Title (H1) */
+.hero-title {
+  font-size: 4.0rem; /* Large size for prominence */
+  font-weight: 650; /* Bold weight for impact */
+  letter-spacing: 2px; /* Subtle spacing for elegance */
+  margin-bottom: 1px; /* Space below title */
+}
+
+/* Location (P) */
+.hero-location {
+  font-size: 1.1rem; /* Balanced size */
+  margin-bottom: 20px; /* Space below the location */
+  color: #ccc;
+}
+
+/* Subtext */
+.subtext {
+  font-size: 1.1rem; /* Slightly larger for readability */
+  color: #ccc; /* Subtle text color */
+  font-style: italic; /* Elegant styling */
+  margin-top: 5px; /* Small spacing above subtext */
+}
+
+/* Instagram Link */
+.insta-link {
+  color: #c9af83; /* Matches the hero text color */
+  text-decoration: none; /* Removes the default underline */
+  font-weight: 600; /* Slightly bold for emphasis */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.insta-link:hover {
+  color: #846d46; /* Subtle hover color to match modern aesthetics */
+}
+
+/* Call and Book Button */
+.call-me-btn {
+  font-family: 'Fraunces', serif; /* Clean, modern serif font */
+  font-size: 1rem;
+  font-weight: 900; /* Bolder for impact */
+  color: #fff; /* White text */
+  text-decoration: none;
+  padding: 12px 50px; /* Balanced padding for a sleek look */
+  border: 2px solid #fff; /* Hollow button with a sharp border */
+  background-color: transparent; /* Hollow appearance */
+  border-radius: 999px; /* Fully rounded corners for pill-shaped button */
+  display: inline-block;
+  margin-top: 20px; /* Space above the button */
+  cursor: pointer;
+  letter-spacing: 1px; /* Adds a subtle modern feel */
+  text-transform: uppercase; /* Makes text sharp and impactful */
+  overflow: hidden; /* Required for hover effect */
+  position: relative; /* For pseudo-element positioning */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button Hover Effect */
+.call-me-btn:hover {
+  background-color: #796b53; /* Cream background on hover */
+  color: #000; /* Dark text for contrast */
+  transform: translateY(-2px); /* Subtle upward movement */
+}
+
+/* Hover Animation Effect */
+.call-me-btn:after,
+.call-me-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #8e8469; /* Slightly lighter cream */
+  z-index: -1; /* Place behind text */
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.call-me-btn:after {
+  background-color: #dedede; /* Lighter shade for hover effect */
+  transition-delay: 0.1s; /* Slight delay for smoothness */
+}
+
+.call-me-btn:hover:after,
+.call-me-btn:hover:before {
+  transform: translateX(100%); /* Slide effect on hover */
+}
+  
+/* Mission Section Styling */
+.mission {
+  background-color: #f7f4ee;
+  padding: 60px 40px; /* Adds horizontal and vertical padding */
+  text-align: center;
+}
+
+.mission-container {
+  display: flex; /* Horizontal alignment */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  gap: 30px; /* Space between the sections */
+  justify-content: center; /* Centers all the content horizontally */
+  align-items: stretch; /* Ensures all items match height */
+  max-width: 1100px; /* Limits width for better central alignment */
+  margin: 0 auto; /* Centers the entire container */
+
+}
+
+/* Mission Section Layout for Smaller Screens */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .mission-container {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Center text for smaller screens */
+  }
+  
+  .mission-text,
+  .mission-details {
+    flex: 1 1 auto; /* Allow items to grow/shrink naturally */
+    max-width: 100%; /* Ensure they take up the full width */
+  }
+
+  .divider {
+    display: none; /* Remove the divider for smaller screens */
+  }
+}
+
+/* LEFT: Mission Text */
+.mission {
+  background-color: #f7f4ee; /* Light grey or white */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.mission-title {
+  font-family: 'Fraunces', serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.mission-subtitle {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #757575;
+  margin-bottom: 0;
+}
+
+/* CENTER: Divider */
+.divider {
+  width: 2px; /* Thin vertical line */
+  background-color: #ccc; /* Subtle gray for modern look */
+  align-self: stretch; /* Stretches to match the tallest sibling's height */
+}
+
+/* RIGHT: Mission Details */
+.mission-details {
+  flex: 1 1 55%; /* Takes 55% of the width */
+  text-align: left;
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.mission-details p {
+  margin-bottom: 15px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.portfolio {
+  background-color: #f7f4ee; /* Match mission section background */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Carousel Wrapper */
+.carousel {
+  position: relative;
+  width: 90%; /* Reduce width to 90% of the screen */
+  max-width: 1200px; /* Optional: Set a maximum width for large screens */
+  height: 80vh; /* Reduce height to 80% of the viewport */
+  padding: 2rem 0; /* Add vertical padding above and below */
+  overflow: hidden;
+  background-color: #000; /* Optional: Dark background for better visuals */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  margin: 0 auto; /* Center horizontally */
+  border-radius: 10px; /* Optional: Add rounded corners for better aesthetics */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+}
+
+/* Slides */
+.slides {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%; /* Fit the reduced carousel height */
+}
+.slide {
+  flex: 0 0 100%;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+  z-index: 0;
+}
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    height: 40vh; /* Shorter frame for smaller screens */
+  }
+
+  .slide img {
+    height: 100%; /* Ensure the image fills the carousel */
+    object-fit: cover; /* Crops the image to ensure no black bars */
+    object-position: center; /* Focus the center of the image */
+  }
+}
+/* Buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  z-index: 2;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+.carousel-button.prev {
+  left: 1rem;
+}
+.carousel-button.next {
+  right: 1rem;
+}
+
+
+
+/* Packages Section */
+.packages {
+  background-color: #f7f4ee; /* Light beige background */
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Fraunces', serif;
+}
+
+.packages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.packages-title {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+}
+
+.price-list {
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #846d46;
+  margin-left: 10px;
+}
+
+.packages-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.package-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.package-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.package-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.package-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.package-card ul li {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.price-btn {
+  background-color: transparent;
+  color: #846d46;
+  border: 2px solid #846d46;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.price-btn:hover {
+  background-color: #846d46;
+  color: #fff;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+.packages-footer {
+  margin-top: 40px;
+  color: #846d46;
+}
+
+.packages-footer p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.packages-footer a {
+  font-size: 1.2rem;
+  color: #846d46;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.packages-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .packages-list {
+    grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+  }
+}
+
+
+
+/* Footer Styles */
+.site-footer {
+  background-color: #1a1a1a; /* Dark background */
+  color: #eaeaea; /* Light text */
+  padding: 30px 20px; /* Compact height */
+  font-family: 'Fraunces', serif;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align to the top of the footer */
+  gap: 40px; /* Adjust spacing between sections */
+  max-width: 800px; /* Reduce width for tighter layout */
+  margin: 0 auto;
+}
+
+.footer-contact,
+.footer-social {
+  flex: 1 1 45%; /* Evenly divide the space between the two sections */
+  text-align: center;
+}
+
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #a59477; /* Cream headings */
+  text-align: center;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.footer-contact a {
+  color: #a59477; /* Cream links */
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  color: #846d46; /* Hover color for contact links */
+}
+
+/* Social Media */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1); /* Subtle hover effect */
+}
+
+/* Call-to-Action Button */
+.footer-cta {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #c9af83;
+  border-radius: 25px;
+  color: #a59477;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-cta:hover {
+  background-color: #c9af83;
+  color: #1a1a1a; /* Dark text on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align content horizontally */
+    text-align: center; /* Center-align text inside each section */
+    gap: 20px; /* Adjust spacing between sections */
+  }
+
+  .social-icons {
+    justify-content: center; /* Center social icons */
+  }
+
+  .footer-contact,
+  .footer-social {
+    flex: 1 1 100%; /* Full width for each section */
+    text-align: center; /* Center-align content within sections */
+  }
+}
+
