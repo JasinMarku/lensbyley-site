@@ -9,6 +9,9 @@
     font-family: 'Lora', serif;
     color: #333;
     line-height: 1.6;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-color: #f7f4ee; /* Ensure the background color matches */
   }
   
 /* Navigation Bar */
@@ -50,15 +53,18 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 80vh; /* Full-screen height with room for content below */
-  background-image: url('./porfolio/1.jpg'); /* Hero image */
+  height: 100vh;
+  background-image: url('./porfolio/1.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed; /* Keep this for a fixed background */
   display: flex;
-  justify-content: center; /* Centers the text horizontally */
-  align-items: center; /* Centers the text vertically */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
+/* Remove or adjust the parallax effect */
 .hero::after {
   content: '';
   position: absolute;
@@ -66,42 +72,71 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Dark overlay for contrast */
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.7)
+  );
   z-index: 1;
 }
-
 /* Hero Text */
 .hero-text {
-  font-family: 'Fraunces', serif;
   position: relative;
-  z-index: 2; /* Ensures text is above the overlay */
-  color: #fff; /* White text */
+  z-index: 2;
+  color: #fff;
   text-align: center;
-  max-width: 800px; /* Limits the width of the text block */
+  max-width: 800px;
   margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease forwards;
 }
 
 /* Title (H1) */
 .hero-title {
-  font-size: 4.0rem; /* Large size for prominence */
-  font-weight: 650; /* Bold weight for impact */
-  letter-spacing: 2px; /* Subtle spacing for elegance */
-  margin-bottom: 1px; /* Space below title */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 10vw, 6rem); /* Increased size for more impact */
+  font-weight: 700; /* Increased weight for emphasis */
+  letter-spacing: 4px; /* Adjusted letter spacing for a grander look */
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Location (P) */
 .hero-location {
-  font-size: 1.1rem; /* Balanced size */
-  margin-bottom: 20px; /* Space below the location */
-  color: #ccc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
 }
 
 /* Subtext */
 .subtext {
-  font-size: 1.1rem; /* Slightly larger for readability */
-  color: #ccc; /* Subtle text color */
-  font-style: italic; /* Elegant styling */
-  margin-top: 5px; /* Small spacing above subtext */
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.85); /* Original color */
+  font-weight: 500; /* Increased weight for emphasis */
+  letter-spacing: 1px;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+  margin-top: 0.5rem; /* Added margin for spacing */
+}
+
+.subtext a {
+  color: #c9af83; /* Change link color for better visibility */
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition */
+}
+
+.subtext a:hover {
+  color: #fff; /* Change color on hover */
+  text-decoration: underline; /* Add underline on hover */
 }
 
 /* Instagram Link */
@@ -118,56 +153,82 @@
 
 /* Call and Book Button */
 .call-me-btn {
-  font-family: 'Fraunces', serif; /* Clean, modern serif font */
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
-  font-weight: 900; /* Bolder for impact */
-  color: #fff; /* White text */
+  font-weight: 500;
+  color: #fff;
   text-decoration: none;
-  padding: 12px 50px; /* Balanced padding for a sleek look */
-  border: 2px solid #fff; /* Hollow button with a sharp border */
-  background-color: transparent; /* Hollow appearance */
-  border-radius: 999px; /* Fully rounded corners for pill-shaped button */
+  padding: 1rem 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 3px;
   display: inline-block;
-  margin-top: 20px; /* Space above the button */
+  margin-top: 2rem;
   cursor: pointer;
-  letter-spacing: 1px; /* Adds a subtle modern feel */
-  text-transform: uppercase; /* Makes text sharp and impactful */
-  overflow: hidden; /* Required for hover effect */
-  position: relative; /* For pseudo-element positioning */
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.9s;
+  opacity: 0;
 }
 
-/* Button Hover Effect */
 .call-me-btn:hover {
-  background-color: #796b53; /* Cream background on hover */
-  color: #000; /* Dark text for contrast */
-  transform: translateY(-2px); /* Subtle upward movement */
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Hover Animation Effect */
-.call-me-btn:after,
-.call-me-btn:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background-color: #8e8469; /* Slightly lighter cream */
-  z-index: -1; /* Place behind text */
-  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.call-me-btn:after {
-  background-color: #dedede; /* Lighter shade for hover effect */
-  transition-delay: 0.1s; /* Slight delay for smoothness */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.call-me-btn:hover:after,
-.call-me-btn:hover:before {
-  transform: translateX(100%); /* Slide effect on hover */
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    height: 90vh;
+    background-attachment: scroll;
+  }
   
+  .hero-text {
+    padding: 0 1rem;
+  }
+  
+  .call-me-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility Improvements */
+.hero-text {
+  aria-label: "Hero section with main heading and call to action";
+}
+
+.call-me-btn {
+  role: "button";
+  aria-label: "Call and book photography session";
+}
+
 /* Mission Section Styling */
 .mission {
   background-color: #f7f4ee;
@@ -259,20 +320,55 @@ body {
 }
 
 .portfolio {
-  background-color: #f7f4ee; /* Match mission section background */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
   padding: 20px;
-  text-align: center;
+  background-color: #f7f4ee;
+  border-radius: 10px;
+}
+
+.portfolio img {
+  width: calc(33.33% - 10px); /* Keep three images per row */
+  height: 200px; /* Decreased height for a more landscape appearance */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+/* Adjust for larger landscape appearance */
+@media (min-width: 1024px) { /* Adjust for larger screens */
+  .portfolio img {
+    width: calc(33.33% - 10px); /* Keep three images per row */
+    height: 150px; /* Further decrease height for a more landscape look */
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .portfolio img {
+    width: calc(50% - 10px); /* Two images per row on tablets */
+    height: 200px; /* Shorter height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio img {
+    width: 100%; /* Single column on mobile */
+    height: 250px;
+  }
 }
 
 /* Carousel Wrapper */
 .carousel {
   position: relative;
-  width: 90%; /* Reduce width to 90% of the screen */
+  width: 100%; /* Set width to 100% for full coverage */
   max-width: 1200px; /* Optional: Set a maximum width for large screens */
-  height: 80vh; /* Reduce height to 80% of the viewport */
+  height: 60vh; /* Adjust height for a more landscape appearance */
   padding: 2rem 0; /* Add vertical padding above and below */
   overflow: hidden;
-  background-color: #000; /* Optional: Dark background for better visuals */
+  background-color: #f7f4ee; /* Set the same cream-like background color */
   display: flex;
   align-items: center; /* Center content vertically */
   margin: 0 auto; /* Center horizontally */
@@ -302,14 +398,15 @@ body {
 }
 .slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* Change to auto for a more landscape appearance */
+  max-height: 70vh; /* Set a maximum height to maintain landscape */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
   object-position: center;
 }
 
 @media (max-width: 768px) {
   .carousel {
-    height: 40vh; /* Shorter frame for smaller screens */
+    height: 50vh; /* Adjust height for mobile if needed */
   }
 
   .slide img {
@@ -349,7 +446,7 @@ body {
   background-color: #f7f4ee; /* Light beige background */
   padding: 60px 20px;
   text-align: center;
-  font-family: 'Fraunces', serif;
+  font-family: 'Cormorant Garamond', serif; /* Use Cormorant Garamond for the main font */
 }
 
 .packages-container {
@@ -358,11 +455,15 @@ body {
 }
 
 .packages-title {
-  font-size: 2rem;
-  color: #1a1a1a;
-  margin-bottom: 5px;
+  font-size: clamp(2.5rem, 6vw, 3.5rem); /* Increased size for more impact */
+  font-weight: 800; /* Increased weight for emphasis */
+  letter-spacing: 2px; /* Adjusted letter spacing for a grander look */
+  color: #c9af83; /* Changed color for better visibility */
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Added subtle text shadow */
+  padding: 10px; /* Added padding for a more spacious feel */
+  border-bottom: 2px solid #846d46; /* Optional: Added a bottom border */
 }
-
 .price-list {
   font-size: 1.5rem;
   font-family: 'Playfair Display', serif;
@@ -385,6 +486,8 @@ body {
   padding: 20px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: visible;
 }
 
 .package-card:hover {
@@ -399,7 +502,8 @@ body {
 }
 
 .package-card h3 {
-  font-size: 1.2rem;
+  font-family: 'Cormorant Garamond', serif; /* Use Cormorant Garamond for package titles */
+  font-size: 1.5rem; /* Adjusted size for visibility */
   color: #333;
   margin-bottom: 15px;
 }
@@ -412,7 +516,8 @@ body {
 }
 
 .package-card ul li {
-  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat for list items */
+  font-size: 1rem; /* Adjusted size for readability */
   color: #555;
   margin-bottom: 5px;
 }
@@ -426,7 +531,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .price-btn:hover {
@@ -466,6 +571,31 @@ body {
   .packages-list {
     grid-template-columns: 1fr; /* Stack cards vertically on small screens */
   }
+}
+
+/* Ribbon styling for popular package */
+.package-card {
+  position: relative; /* Needed for ribbon positioning */
+  overflow: visible; /* Allow ribbon to extend outside card */
+}
+
+.package-card.featured {
+  border: 2px solid #c9af83; /* Subtle golden border */
+}
+
+.ribbon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #c9af83;
+  color: white;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1;
 }
 
 
@@ -567,6 +697,41 @@ body {
   .footer-social {
     flex: 1 1 100%; /* Full width for each section */
     text-align: center; /* Center-align content within sections */
+  }
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center; /* Center the icons */
+  gap: 20px; /* Space between icons */
+  margin-top: 1rem; /* Add some space above */
+}
+
+.social-icon {
+  width: 30px; /* Slightly larger for better visibility */
+  height: 30px;
+  opacity: 0.7; /* Decreased opacity for a more subtle look */
+  transition: transform 0.3s, opacity 0.3s; /* Smooth transition */
+}
+
+.social-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  opacity: 1; /* Full opacity on hover */
+}
+
+/* Adjust spacing for mobile devices */
+@media (max-width: 768px) {
+  .mission {
+    margin-bottom: 20px; /* Reduce bottom margin for the mission section */
+  }
+
+  .packages {
+    margin-top: 10px; /* Reduce top margin for the packages section */
+  }
+
+  .carousel {
+    margin-top: 10px; /* Adjust carousel margin if needed */
   }
 }
 

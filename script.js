@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const slide = document.createElement('li');
     slide.className = 'slide';
     if (i === 1) slide.classList.add('active');
-    slide.innerHTML = `<img src="${folderPath}${i}.jpg" alt="Portfolio Image ${i}">`;
+    slide.innerHTML = `<img src="${folderPath}${i}.jpg" alt="Portfolio Image ${i}" class="portfolio-image">`;
     slidesContainer.appendChild(slide);
   }
 
@@ -34,4 +34,18 @@ document.addEventListener('DOMContentLoaded', function () {
       activeSlide.classList.remove("active");
     });
   });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Simplified parallax effect for hero section
+  const hero = document.querySelector('.hero');
+  let isScrolling = false;
 });
