@@ -53,18 +53,18 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Full viewport height */
   background-image: url('./porfolio/1.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Keep this for a fixed background */
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-/* Remove or adjust the parallax effect */
+/* Darker and Blurred Background Overlay */
 .hero::after {
   content: '';
   position: absolute;
@@ -72,17 +72,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.5) 60%,
-    rgba(0, 0, 0, 0.7)
-  );
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay for more shadow effect */
+  backdrop-filter: blur(2.0px); /* Reduced blur effect */
+  z-index: 1; /* Ensure it sits above the background image but below the text */
 }
-/* Hero Text */
+
 .hero-text {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Ensure text is above the overlay */
   color: #fff;
   text-align: center;
   max-width: 800px;
@@ -92,96 +89,47 @@
   animation: fadeInUp 1.2s ease forwards;
 }
 
-/* Title (H1) */
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4rem, 10vw, 6rem); /* Increased size for more impact */
-  font-weight: 700; /* Increased weight for emphasis */
-  letter-spacing: 4px; /* Adjusted letter spacing for a grander look */
-  margin-bottom: 0.5rem;
+  font-size: clamp(4.5rem, 12vw, 7rem);
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Location (P) */
 .hero-location {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: 300;
-  letter-spacing: 2px;
-  margin-bottom: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.95);
   animation: fadeIn 1.5s ease forwards;
   animation-delay: 0.3s;
   opacity: 0;
 }
 
-/* Subtext */
 .subtext {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.85); /* Original color */
-  font-weight: 500; /* Increased weight for emphasis */
-  letter-spacing: 1px;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  letter-spacing: 2px;
   animation: fadeIn 1.5s ease forwards;
   animation-delay: 0.6s;
   opacity: 0;
-  margin-top: 0.5rem; /* Added margin for spacing */
+  margin-bottom: 2.5rem;
 }
 
-.subtext a {
-  color: #c9af83; /* Change link color for better visibility */
-  text-decoration: none; /* Remove default underline */
-  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition */
+/* Hero Actions Container */
+/* Fade-in Keyframes */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
-.subtext a:hover {
-  color: #fff; /* Change color on hover */
-  text-decoration: underline; /* Add underline on hover */
-}
-
-/* Instagram Link */
-.insta-link {
-  color: #c9af83; /* Matches the hero text color */
-  text-decoration: none; /* Removes the default underline */
-  font-weight: 600; /* Slightly bold for emphasis */
-  transition: color 0.3s ease; /* Smooth hover effect */
-}
-
-.insta-link:hover {
-  color: #846d46; /* Subtle hover color to match modern aesthetics */
-}
-
-/* Call and Book Button */
-.call-me-btn {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #fff;
-  text-decoration: none;
-  padding: 1rem 2.5rem;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 3px;
-  display: inline-block;
-  margin-top: 2rem;
-  cursor: pointer;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  animation: fadeIn 1.5s ease forwards;
-  animation-delay: 0.9s;
-  opacity: 0;
-}
-
-.call-me-btn:hover {
-  background: #fff;
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -193,24 +141,89 @@
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* Hero Actions Container */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.5s;
 }
+
+/* Button */
+.call-me-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 1.2rem 3rem;
+  border: none; /* Remove border for a cleaner look */
+  border-radius: 8px; /* Sharper corners */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(255, 239, 204, 0.5); /* Light beige background with transparency */
+  backdrop-filter: blur(10px); /* Blurry background effect */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1), /* Subtle shadow */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2); /* Inner glow */
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards;
+  animation-delay: 1.2s;
+}
+
+.call-me-btn:hover {
+  background: rgba(255, 239, 204, 0.7); /* Slightly more opaque on hover */
+  transform: translateY(-2px) scale(1.02); /* Slight scale up */
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15), /* Larger shadow */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3), /* Enhanced inner glow */
+    0 0 20px rgba(255, 255, 255, 0.4); /* Soft white glow */
+}
+
+.call-me-btn:active {
+  transform: translateY(0) scale(0.98); /* Slight press effect */
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero {
-    height: 90vh;
-    background-attachment: scroll;
+    height: 100vh; /* Ensure full viewport height on mobile */
+    min-height: -webkit-fill-available; /* Fix for iOS Safari */
+    background-attachment: scroll; /* Better performance on mobile */
   }
   
   .hero-text {
     padding: 0 1rem;
+    margin-top: -50px; /* Adjust if needed to center content better */
   }
   
   .call-me-btn {
@@ -219,93 +232,122 @@
   }
 }
 
-/* Accessibility Improvements */
-.hero-text {
-  aria-label: "Hero section with main heading and call to action";
-}
-
-.call-me-btn {
-  role: "button";
-  aria-label: "Call and book photography session";
-}
-
 /* Mission Section Styling */
 .mission {
   background-color: #f7f4ee;
-  padding: 60px 40px; /* Adds horizontal and vertical padding */
-  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .mission-container {
-  display: flex; /* Horizontal alignment */
-  flex-wrap: nowrap; /* Prevent wrapping */
-  gap: 30px; /* Space between the sections */
-  justify-content: center; /* Centers all the content horizontally */
-  align-items: stretch; /* Ensures all items match height */
-  max-width: 1100px; /* Limits width for better central alignment */
-  margin: 0 auto; /* Centers the entire container */
-
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
 }
 
-/* Mission Section Layout for Smaller Screens */
-@media (max-width: 768px) { /* Adjust breakpoint as needed */
-  .mission-container {
-    flex-direction: column; /* Stack items vertically */
-    text-align: center; /* Center text for smaller screens */
-  }
-  
-  .mission-text,
-  .mission-details {
-    flex: 1 1 auto; /* Allow items to grow/shrink naturally */
-    max-width: 100%; /* Ensure they take up the full width */
-  }
-
-  .divider {
-    display: none; /* Remove the divider for smaller screens */
-  }
-}
-
-/* LEFT: Mission Text */
-.mission {
-  background-color: #f7f4ee; /* Light grey or white */
-  padding: 60px 20px;
+.mission-content {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .mission-title {
-  font-family: 'Fraunces', serif;
-  font-size: 2.1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.mission-subtitle {
-  font-family: 'Fraunces', serif;
-  font-size: 1.3rem;
-  font-style: italic;
-  color: #757575;
-  margin-bottom: 0;
-}
-
-/* CENTER: Divider */
-.divider {
-  width: 2px; /* Thin vertical line */
-  background-color: #ccc; /* Subtle gray for modern look */
-  align-self: stretch; /* Stretches to match the tallest sibling's height */
-}
-
-/* RIGHT: Mission Details */
-.mission-details {
-  flex: 1 1 55%; /* Takes 55% of the width */
-  text-align: left;
-  font-family: 'Fraunces', serif;
-  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
   color: #333;
-  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
-.mission-details p {
-  margin-bottom: 15px;
+.mission-accent {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #846d46;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.mission-text {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mission-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mission-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #846d46;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #846d46;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.mission-text:hover .highlight::after {
+  transform: scaleX(1);
+}
+
+.mission-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.mission-cta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #846d46;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mission {
+    padding: 60px 20px;
+  }
+  
+  .mission-text {
+    padding: 1.5rem;
+  }
+  
+  .mission-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 /* Reset */
@@ -324,98 +366,106 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  padding: 20px;
-  background-color: #f7f4ee;
-  border-radius: 10px;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 0;
+  margin-top: 0; /* Remove top margin */
 }
 
 .portfolio img {
-  width: calc(33.33% - 10px); /* Keep three images per row */
-  height: 200px; /* Decreased height for a more landscape appearance */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  width: calc(33.33% - 10px);
+  height: 250px; /* Fixed height for consistent sizing */
+  object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s;
 }
 
-/* Adjust for larger landscape appearance */
-@media (min-width: 1024px) { /* Adjust for larger screens */
+/* Larger Screens */
+@media (min-width: 1024px) {
   .portfolio img {
-    width: calc(33.33% - 10px); /* Keep three images per row */
-    height: 150px; /* Further decrease height for a more landscape look */
+    width: calc(33.33% - 10px);
+    height: 300px; /* Slightly taller on larger screens */
   }
 }
 
-/* Responsive design for smaller screens */
+/* Tablet Screens */
 @media (max-width: 768px) {
+  .carousel {
+    height: 50vh;
+    margin-bottom: 15px; /* Less space on mobile */
+  }
+  .slide img {
+    object-position: center;
+  }
   .portfolio img {
-    width: calc(50% - 10px); /* Two images per row on tablets */
-    height: 200px; /* Shorter height for mobile */
+    width: calc(50% - 10px);
+    height: 200px;
   }
 }
 
+/* Mobile Screens */
 @media (max-width: 480px) {
+  .carousel {
+    margin-bottom: 10px; /* Even less space on mobile */
+  }
   .portfolio img {
-    width: 100%; /* Single column on mobile */
+    width: 100%;
     height: 250px;
   }
 }
 
-/* Carousel Wrapper */
+/* Carousel Section */
 .carousel {
   position: relative;
-  width: 100%; /* Set width to 100% for full coverage */
-  max-width: 1200px; /* Optional: Set a maximum width for large screens */
-  height: 60vh; /* Adjust height for a more landscape appearance */
-  padding: 2rem 0; /* Add vertical padding above and below */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 20px; /* Space between carousel and packages */
   overflow: hidden;
-  background-color: #f7f4ee; /* Set the same cream-like background color */
   display: flex;
-  align-items: center; /* Center content vertically */
-  margin: 0 auto; /* Center horizontally */
-  border-radius: 10px; /* Optional: Add rounded corners for better aesthetics */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: transparent;
+  height: 70vh; /* Maintain height for better image proportions */
 }
 
-/* Slides */
 .slides {
   display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 100%; /* Fit the reduced carousel height */
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
+
 .slide {
   flex: 0 0 100%;
   opacity: 0;
   position: absolute;
   inset: 0;
-  transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .slide.active {
   opacity: 1;
   z-index: 1;
 }
+
 .slide img {
-  width: 100%;
-  height: auto; /* Change to auto for a more landscape appearance */
-  max-height: 70vh; /* Set a maximum height to maintain landscape */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  object-position: center;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
 }
 
-@media (max-width: 768px) {
-  .carousel {
-    height: 50vh; /* Adjust height for mobile if needed */
-  }
-
-  .slide img {
-    height: 100%; /* Ensure the image fills the carousel */
-    object-fit: cover; /* Crops the image to ensure no black bars */
-    object-position: center; /* Focus the center of the image */
-  }
-}
-/* Buttons */
+/* Navigation Buttons */
 .carousel-button {
   position: absolute;
   top: 50%;
@@ -432,14 +482,14 @@ body {
 .carousel-button:hover {
   background: rgba(0, 0, 0, 0.8);
 }
+
 .carousel-button.prev {
   left: 1rem;
 }
+
 .carousel-button.next {
   right: 1rem;
 }
-
-
 
 /* Packages Section */
 .packages {
@@ -732,6 +782,94 @@ body {
 
   .carousel {
     margin-top: 10px; /* Adjust carousel margin if needed */
+  }
+}
+
+/* Fullscreen Container */
+.fullscreen-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-overlay {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+.fullscreen-overlay img {
+  max-width: 100%;
+  max-height: 95vh;
+  object-fit: contain;
+}
+
+/* Close Button */
+.close-fullscreen {
+  position: absolute;
+  top: 20px; /* Adjusted position from the top */
+  right: 20px; /* Adjusted position from the right */
+  background: rgba(255, 255, 255, 0.3); /* Semi-transparent background for better visibility */
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%; /* Make it circular */
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 2; /* Ensure it is above the image */
+}
+
+.close-fullscreen:hover {
+  background: rgba(255, 255, 255, 0.5); /* Slightly more opaque on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Make carousel images clickable */
+.slide img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.slide img:hover {
+  transform: scale(1.02);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .carousel {
+    padding: 0 20px; /* Add horizontal padding */
+    height: 50vh; /* Adjust height for mobile */
+    margin-bottom: 10px; /* Less space between sections */
+  }
+
+  .slide img {
+    object-position: center;
+  }
+
+  .portfolio img {
+    width: calc(50% - 10px);
+    height: 200px; /* Maintain height for consistency */
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .carousel {
+    padding: 0 15px; /* Slightly less padding on smaller screens */
+    margin-bottom: 5px; /* Even less space on mobile */
+  }
+
+  .portfolio img {
+    width: 100%;
+    height: 250px; /* Maintain height for consistency */
   }
 }
 
