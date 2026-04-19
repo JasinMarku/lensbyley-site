@@ -1,0 +1,137 @@
+/* =============================================
+   ABOUT.CSS — About page
+   ============================================= */
+
+/* --- Page Header with Portrait --- */
+.about-header {
+  padding-top: calc(var(--nav-height) + clamp(var(--space-12), 5vw, var(--space-20)));
+  padding-bottom: clamp(var(--space-12), 5vw, var(--space-20));
+}
+
+.about-header-inner {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.about-header-text h1 {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.about-header-text .eyebrow {
+  margin-bottom: var(--space-3);
+}
+
+.about-header-text p {
+  max-width: 480px;
+  font-size: var(--text-lg);
+  line-height: 1.75;
+}
+
+.about-portrait {
+  overflow: hidden;
+  background-color: var(--color-surface);
+  aspect-ratio: 3 / 4;
+}
+
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Bio Section --- */
+.about-bio {
+  padding-block: clamp(var(--space-12), 5vw, var(--space-20));
+  border-top: 1px solid rgba(42, 36, 32, 0.08);
+}
+
+.about-bio-inner {
+  display: grid;
+  grid-template-columns: clamp(100px, 14%, 160px) 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.about-bio-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-ink-muted);
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
+}
+
+.about-bio-text p {
+  margin-bottom: var(--space-6);
+  max-width: var(--max-width-text);
+  line-height: 1.85;
+}
+
+.about-bio-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- About CTA --- */
+.about-cta {
+  padding-block: clamp(var(--space-12), 5vw, var(--space-20));
+  background-color: var(--color-surface);
+  text-align: center;
+}
+
+.about-cta h2 {
+  margin-bottom: var(--space-6);
+}
+
+.about-cta p {
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+  text-align: center;
+  max-width: 460px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .about-header-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .about-portrait {
+    order: -1;
+    aspect-ratio: 4 / 5;
+  }
+
+  .about-header-text p {
+    max-width: none;
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-bio-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .about-bio-label {
+    position: static;
+    font-size: var(--text-base);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0;
+  }
+
+  .about-bio-text p {
+    line-height: 1.75;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-portrait {
+    aspect-ratio: 3 / 4;
+  }
+}
