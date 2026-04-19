@@ -118,8 +118,12 @@
   }
 
   .service-item-image {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 2 / 3;
     order: -1 !important;
+  }
+
+  .service-item-image img {
+    object-position: top center;
   }
 
   .service-item-text {

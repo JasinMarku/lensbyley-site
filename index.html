@@ -89,34 +89,42 @@
          SELECTED WORK
          ============================================ -->
     <section class="selected-work section">
-
       <div class="container">
+
         <div class="work-header">
           <span class="eyebrow">Selected Work</span>
         </div>
-      </div>
 
-      <!-- Grid is full-bleed — outside the container intentionally -->
-      <div class="work-grid">
-        <!-- Feature image — spans 2 rows on the left -->
-        <div class="work-item">
-          <img src="photo-gallery/E8D91E2A-8865-4BC6-B704-45487CA13B7F-4K.jpg" alt="">
+        <div class="gallery-grid">
+          <button class="gallery-item" data-src="photo-gallery/E8D91E2A-8865-4BC6-B704-45487CA13B7F-4K.jpg" aria-label="View photo">
+            <img src="photo-gallery/E8D91E2A-8865-4BC6-B704-45487CA13B7F-4K.jpg" alt="" loading="lazy">
+          </button>
+          <button class="gallery-item" data-src="photo-gallery/B7E76C5E-33B7-4879-A836-1C56689EFE0F-4K.jpg" aria-label="View photo">
+            <img src="photo-gallery/B7E76C5E-33B7-4879-A836-1C56689EFE0F-4K.jpg" alt="" loading="lazy">
+          </button>
+          <button class="gallery-item" data-src="photo-gallery/IMG_3618-4K.jpg" aria-label="View photo">
+            <img src="photo-gallery/IMG_3618-4K.jpg" alt="" loading="lazy">
+          </button>
+          <button class="gallery-item" data-src="photo-gallery/IMG_2135-4K.jpg" aria-label="View photo">
+            <img src="photo-gallery/IMG_2135-4K.jpg" alt="" loading="lazy">
+          </button>
+          <button class="gallery-item" data-src="photo-gallery/54F51825-A479-404D-88D6-1ECA5910E24E-4K.jpg" aria-label="View photo">
+            <img src="photo-gallery/54F51825-A479-404D-88D6-1ECA5910E24E-4K.jpg" alt="" loading="lazy">
+          </button>
+          <button class="gallery-item" data-src="photo-gallery/IMG_3669-4K.jpg" aria-label="View photo">
+            <img src="photo-gallery/IMG_3669-4K.jpg" alt="" loading="lazy">
+          </button>
         </div>
-        <div class="work-item">
-          <img src="photo-gallery/B7E76C5E-33B7-4879-A836-1C56689EFE0F-4K.jpg" alt="">
-        </div>
-        <div class="work-item">
-          <img src="photo-gallery/IMG_3618-4K.jpg" alt="">
-        </div>
-        <div class="work-item">
-          <img src="photo-gallery/IMG_2135-4K.jpg" alt="">
-        </div>
-        <div class="work-item">
-          <img src="photo-gallery/54F51825-A479-404D-88D6-1ECA5910E24E-4K.jpg" alt="">
-        </div>
-      </div>
 
+      </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <div class="lightbox-backdrop"></div>
+      <img class="lightbox-img" src="" alt="">
+      <button class="lightbox-close" aria-label="Close photo viewer">&#215;</button>
+    </div>
 
 
     <!-- ============================================
@@ -328,6 +336,7 @@
 
   <script src="js/nav.js"></script>
   <script src="js/hero-slides.js"></script>
+  <script src="js/gallery.js"></script>
 
 </body>
 </html>
