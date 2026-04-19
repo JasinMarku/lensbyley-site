@@ -7,7 +7,7 @@ This document defines the overall purpose of the LensByLey website redesign and 
 # Project Overview
 
 ## Client
-Leyla Mustofoski
+Leyla Mustafoski
 
 ## Brand
 LensByLey
