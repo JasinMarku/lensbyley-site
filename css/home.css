@@ -29,8 +29,13 @@
 .hero {
   position: relative;
   width: 100%;
+  /* Fallback for browsers without dvh/svh support */
   height: 100vh;
-  min-height: 640px;
+  /* svh = smallest viewport height (address bar visible) — prevents the
+     bottom-gap on iOS/Android Safari where 100vh overshoots the visible area.
+     Using svh rather than dvh keeps the hero from resizing during scroll. */
+  height: 100svh;
+  min-height: 560px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -45,12 +50,15 @@
 
 .hero-slide {
   position: absolute;
-  inset: 0;
+  /* Slight outset + scale to hide blur edge bleed */
+  inset: -20px;
   background-size: cover;
   background-position: center 45%;
   opacity: 0;
   transition: opacity 1.2s ease;
-  filter: brightness(0.72);
+  filter: blur(2px) brightness(0.72) saturate(1.05);
+  transform: scale(1.02);
+  will-change: opacity;
 }
 
 .hero-slide.is-active {
@@ -64,8 +72,8 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.65) 0%,
@@ -207,6 +215,42 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 0;
+  }
+
+  .hero-slide {
+    background-position: center 40%;
+    filter: blur(1.5px) brightness(0.62) saturate(1.05);
+  }
+
+  /* Stronger bottom gradient on mobile for text legibility */
+  .hero::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.40) 0%,
+      rgba(0, 0, 0, 0.05) 22%,
+      rgba(0, 0, 0, 0.05) 38%,
+      rgba(0, 0, 0, 0.55) 65%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+
+  .hero-content {
+    padding-inline: var(--space-6);
+    padding-bottom: clamp(var(--space-12), 14vw, var(--space-20));
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 11vw, 3.75rem);
+    line-height: 1.05;
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-sub {
+    margin-bottom: var(--space-8);
+  }
+
   .hero-scroll { display: none; }
 }
 
