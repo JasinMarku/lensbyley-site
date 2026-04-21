@@ -384,6 +384,26 @@
   letter-spacing: 0.05em;
 }
 
+.footer-credit {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
+  padding-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.04em;
+}
+
+.footer-credit a {
+  color: rgba(255, 255, 255, 0.34);
+  transition: color var(--ease);
+}
+
+.footer-credit a:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 @media (max-width: 768px) {
   .footer-inner {
     grid-template-columns: 1fr;
