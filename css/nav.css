@@ -391,17 +391,21 @@
   padding-top: var(--space-2);
   font-family: var(--font-body);
   font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.22);
-  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
 }
 
 .footer-credit a {
-  color: rgba(255, 255, 255, 0.34);
-  transition: color var(--ease);
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 1px;
+  transition: color var(--ease), border-color var(--ease);
 }
 
 .footer-credit a:hover {
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 @media (max-width: 768px) {
